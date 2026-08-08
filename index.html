@@ -1,14 +1,14 @@
-   <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Shazia 🎂</title>
+  <title>Happy Birthday Shazia 💜</title>
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7, #ffc3a0);
       color: #333;
       text-align: center;
       overflow-x: hidden;
@@ -18,66 +18,112 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
     #mainContent { display: none; }
     input {
-      padding: 10px;
+      padding: 12px;
       font-size: 16px;
-      border-radius: 8px;
+      border-radius: 12px;
       border: none;
       margin: 10px;
+      width: 250px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 12px;
       border: none;
       background: #ff4d6d;
       color: white;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    button:hover { background: #e63950; }
-    h1 { font-size: 2.5em; color: #fff; text-shadow: 2px 2px 4px #000; }
+    button:hover { background: #e63950; transform: scale(1.05); }
+    h1 { font-size: 2.8em; color: #fff; text-shadow: 2px 2px 8px #ff4d6d; margin-bottom: 10px; }
+    .wish {
+      background: rgba(255,255,255,0.9);
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.1); }
+    .cake { font-size: 4em; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100% {transform: translateY(0);} 50% {transform: translateY(-20px);} }
+    .hearts { font-size: 2em; }
   </style>
 </head>
 <body>
 
-  <!-- Password Screen -->
   <div id="loginScreen">
-    <h2>Ye website sirf tumhare liye hai ❤️</h2>
+    <h2>💜 Ye website sirf tumhare liye hai 💜</h2>
     <input type="password" id="passwordInput" placeholder="Password likho">
-    <button type="button" onclick="checkPassword()">Open karo</button>
+    <button type="button" onclick="checkPassword()">Open karo 🎁</button>
     <p id="errorMsg" style="color:red; display:none;">Galat password!</p>
   </div>
 
-  <!-- Main Birthday Content -->
   <div id="mainContent">
-    <h1>Happy Birthday Shazia! 🎂🎉</h1>
-    <p>Tumhari zindagi hamesha khushiyon se bhari ho 🤍✨</p>
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday Shazia! 🎉</h1>
+    <div class="hearts">💜💖💜💖💜</div>
+
+    <div class="wish">
+      <p><b>Meri Jan Shazia,</b></p>
+      <p>
+      Aaj ka din sabse special hai kyunki aaj tum is duniya me aayi thi ❤️ 
+      Tumhari muskurahat se meri duniya roshan hai. 
+      Tum meri dua ho, meri khushi ho, aur meri sabse pyari dost ho. 
+      Allah tumhe hamesha khush rakhe, lambi umar de aur tumhari har wish poori ho.
+      <br><br>
+      Door jana nahi tumko... hay kasam 🤍<br>
+      Khud se zyada tumhe chahte hain sanam 💜
+      </p>
+      <p><b>Love you forever! - Amir</b></p>
+    </div>
+
+    <h2>Humari Yaadein 📸</h2>
+    <div class="gallery">
+      <img src="pic1.jpg" alt="Pic 1">
+      <img src="pic2.jpg" alt="Pic 2">
+      <img src="pic3.jpg" alt="Pic 3">
+      <img src="pic4.jpg" alt="Pic 4">
+      <img src="pic5.jpg" alt="Pic 5">
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="doorjana.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
 <script>
   const correctPassword = "iloveyou";
-
   function checkPassword() {
-    const passwordInput = document.getElementById("passwordInput").value;
-    const errorMsg = document.getElementById("errorMsg");
-
-    if (passwordInput === correctPassword) {
+    if (document.getElementById("passwordInput").value === correctPassword) {
       document.getElementById("loginScreen").style.display = "none";
       document.getElementById("mainContent").style.display = "flex";
+      document.getElementById("bgMusic").play();
     } else {
-      errorMsg.style.display = "block";
+      document.getElementById("errorMsg").style.display = "block";
     }
   }
-
-  // Enter key se bhi open ho jaye
-  document.getElementById("passwordInput").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      checkPassword();
-    }
-  });
 </script>
 
 </body>
