@@ -75,8 +75,7 @@
   </div>
 
   <div id="mainContent">
-    <div id="countdown"></div>
-    <div class="cake">🎂</div>
+        <div class="cake">🎂</div>
     <h1>Happy Birthday Shazia! 🎉</h1>
     <div>💜💖💜💖💜</div>
 
@@ -160,18 +159,6 @@
   function showSurprise() { document.getElementById("surprise").style.display = "flex"; }
   function hideSurprise() { document.getElementById("surprise").style.display = "none"; }
 
-  // 3. Countdown - birthday date yahan set karo
-  function startCountdown() {
-    const birthday = new Date("August 14, 2026 00:00:00").getTime(); // date change kar dena
-    setInterval(() => {
-      const now = new Date().getTime();
-      const gap = birthday - now;
-      const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-      document.getElementById("countdown").innerHTML = `Birthday me: ${hours}h ${mins}m baqi 💜`;
-      if(gap < 0) document.getElementById("countdown").innerHTML = "Happy Birthday! 🎉";
-    }, 1000);
-  }
 </script>
 
 </body>
