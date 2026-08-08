@@ -1,0 +1,84 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Shazia 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    #loginScreen, #mainContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #mainContent { display: none; }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #e63950; }
+    h1 { font-size: 2.5em; color: #fff; text-shadow: 2px 2px 4px #000; }
+  </style>
+</head>
+<body>
+
+  <!-- Password Screen -->
+  <div id="loginScreen">
+    <h2>Ye website sirf tumhare liye hai ❤️</h2>
+    <input type="password" id="passwordInput" placeholder="Password likho">
+    <button type="button" onclick="checkPassword()">Open karo</button>
+    <p id="errorMsg" style="color:red; display:none;">Galat password!</p>
+  </div>
+
+  <!-- Main Birthday Content -->
+  <div id="mainContent">
+    <h1>Happy Birthday Shazia! 🎂🎉</h1>
+    <p>Tumhari zindagi hamesha khushiyon se bhari ho 🤍✨</p>
+  </div>
+
+<script>
+  const correctPassword = "iloveyou";
+
+  function checkPassword() {
+    const passwordInput = document.getElementById("passwordInput").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (passwordInput === correctPassword) {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("mainContent").style.display = "flex";
+    } else {
+      errorMsg.style.display = "block";
+    }
+  }
+
+  // Enter key se bhi open ho jaye
+  document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      checkPassword();
+    }
+  });
+</script>
+
+</body>
+</html>
