@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shazia 👑</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #FF9ECD, #C084FC, #FFD700);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  @keyframes gradientBG {
+    0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+  }
+  h1 { font-family: 'Poppins', sans-serif; font-size: 2.5em; animation: sparkle 2s infinite; }
+  @keyframes sparkle { 0%,100%{text-shadow:0 0 10px #fff;} 50%{text-shadow:0 0 30px #FFD700;} }
+  
+  .glass {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .btn {
+    background: #FFD700;
+    color: #C084FC;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s;
+  }
+  .btn:hover{transform: scale(1.05);}
+  .heart { position: fixed; font-size: 20px; animation: float 6s linear infinite; z-index:0; }
+  @keyframes float { to { transform: translateY(-120vh); opacity: 0; } }
+  
+  .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap:10px; }
+  .slide { min-width: 85%; scroll-snap-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius:15px; font-size:1.2em; }
+  
+  #giftBox { font-size: 60px; cursor: pointer; animation: bounce 1.5s infinite; }
+  @keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+  
+  .quiz-option{ background: rgba(255,255,255,0.2); padding:10px; margin:8px; border-radius:10px; cursor:pointer; }
+  .quiz-option:hover{ background: rgba(255,255,255,0.3); }
+  
+  #finale { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; display:none; justify-content:center; align-items:center; flex-direction:column; z-index:999; }
+</style>
+</head>
+<body>
+
+<h1>Happy Birthday Shazia! 🎂💖</h1>
+<p>Swipe karo aur mera surprise dekho ✨</p>
+
+<!-- 1. Letter -->
+<div class="glass">
+  <button class="btn" onclick="showLetter()">Mera Khat Parho 💌</button>
+  <div id="letter" style="display:none; margin-top:15px; line-height:1.8;">
+    <p>
+    Meri Jaan Shazia 👑<br><br>
+    Aaj duniya ka sabse khaas din hai ✨<br>
+    Kyunki aaj woh din hai jab tum is duniya me aayi thi 💫<br><br>
+    Tumhari 1 smile = Mera pura din ban jata hai 😊<br>
+    Tumhari 1 awaz = Mera dil chain se dhadakta hai ❤️<br><br>
+    Allah tumhe har nazar se bachaye 🌙<br>
+    Promise: Tumhara haath kabhi nahi chhodunga 🤝<br>
+    Tumse kabhi door nahi jaunga... kasam se 💍<br><br>
+    I love you more than yesterday, less than tomorrow<br><br>
+    Forever Yours,<br><b>Amir</b> 💌
+    </p>
+  </div>
+</div>
+
+<!-- 2. Song + Voice -->
+<div class="glass">
+  <h3>🎵 Ye gana tumhare liye</h3>
+  <!-- APNA SONG LINK YAHAN DALO -->
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/TUMHARA_SONG_ID" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media"></iframe>
+  
+  <h3>🎤 Meri awaz me suno</h3>
+  <!-- APNI VOICE FILE YAHAN DALO -->
+  <audio controls style="width:100%;" src="voice-note.mp3"></audio>
+</div>
+
+<!-- 3. Quiz -->
+<div class="glass">
+  <h3>Birthday Quiz 🎯</h3>
+  <p>Shazia ka favorite color kaunsa hai?</p>
+  <div class="quiz-option" onclick="checkQuiz(this,false)">Blue</div>
+  <div class="quiz-option" onclick="checkQuiz(this,true)">Pink 💖</div>
+  <div class="quiz-option" onclick="checkQuiz(this,false)">Green</div>
+  <p id="quizResult"></p>
+</div>
+
+<!-- 4. Reasons Slider -->
+<div class="glass">
+  <h3>5 Reasons I Love You ❤️</h3>
+  <div class="slider">
+    <div class="slide">1. Tumhari smile 😊</div>
+    <div class="slide">2. Tumhari care karna 🤗</div>
+    <div class="slide">3. Tumhari baatein 💬</div>
+    <div class="slide">4. Tum jo ho waisi ho 👑</div>
+    <div class="slide">5. Kyunki tum meri Shazia ho ✨</div>
+  </div>
+</div>
+
+<!-- 5. Memories -->
+<div class="glass">
+  <h3>Humari Yaadein 📸</h3>
+  <img src="photo1.jpg" width="45%" style="border-radius:15px; margin:5px; transition:0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+  <img src="photo2.jpg" width="45%" style="border-radius:15px; margin:5px; transition:0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+  <p><small>14 Aug wali selfie 😂</small></p>
+</div>
+
+<!-- 6. Gift Box -->
+<div class="glass">
+  <h3>Mera Gift Kholo 🎁</h3>
+  <div id="giftBox" onclick="openGift()">🎁</div>
+</div>
+
+<!-- Buttons -->
+<div>
+  <button class="btn" onclick="window.open('https://wa.me/92XXXXXXXXXXX?text=I%20love%20you%20so%20much%20Shazia%20❤️')">Reply karo 💬</button>
+  <button class="btn" onclick="location.reload()">Phir se dekho 🔄</button>
+</div>
+
+<!-- 7. Grand Finale -->
+<div id="finale">
+  <h1 style="font-size:3em;">I LOVE YOU SHAZIA! ❤️</h1>
+  <p>Forever & Always 💍</p>
+</div>
+
+<script>
+function showLetter(){ document.getElementById('letter').style.display='block'; }
+function checkQuiz(el, correct){
+  if(correct){
+    document.getElementById('quizResult').innerHTML = "Sahi jawab! I LOVE YOU ❤️";
+    confetti();
+  } else {
+    document.getElementById('quizResult').innerHTML = "Aww try again 😘";
+  }
+}
+function openGift(){
+  confetti({particleCount:200, spread:100, origin:{y:0.6}});
+  setTimeout(()=>{ document.getElementById('finale').style.display='flex'; }, 1000);
+  // Fireworks
+  const duration = 3 * 1000;
+  const end = Date.now() + duration;
+  (function frame(){
+    confetti({particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+    confetti({particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  }());
+}
+
+// Floating hearts
+setInterval(()=>{ 
+  let h=document.createElement('div'); 
+  h.className='heart'; 
+  h.innerHTML=Math.random()>0.5 ? '❤️' : '🎈'; 
+  h.style.left=Math.random()*100+'vw'; 
+  h.style.top='100vh'; 
+  document.body.appendChild(h); 
+  setTimeout(()=>h.remove(),6000); 
+},300);
+</script>
+
+</body>
+</html>
