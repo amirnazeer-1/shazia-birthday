@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shazia ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: 'Nunito', sans-serif;
+  background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #ffdde1);
+  background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+  color: white; text-align: center; overflow-x: hidden;
+}
+@keyframes gradientBG {
+ 0%{background-position:0% 50%} 
+  50%{background-position:100% 50%} 
+  100%{background-position:0% 50%}
+}
+
+/* PASSWORD SCREEN */
+#lockScreen {
+  position:fixed; top:0; left:0; width:100%; height:100%; 
+  background:linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffdde1 100%); 
+  display:flex; justify-content:center; align-items:center; 
+  z-index:9999; overflow:hidden;
+}
+.hearts { position:absolute; width:100%; height:100%; overflow:hidden; }
+.hearts::before, .hearts::after { 
+  content:'💖'; position:absolute; font-size:25px; 
+  animation:fall 6s linear infinite; 
+}
+.hearts::before { left:10%; animation-delay:0s; }
+.hearts::after { left:80%; animation-delay:2s; content:'💕'; }
+@keyframes fall { 
+ 0% { top:-10%; opacity:1; } 
+  100% { top:110%; opacity:0; } 
+}
+
+.glass {
+  background:rgba(255,255,255,0.15); backdrop-filter:blur(20px); 
+  border:1px solid rgba(255,255,255,0.3); padding:30px 20px; 
+  border-radius:25px; margin:20px auto; max-width:600px;
+}
+.btn {
+  background: linear-gradient(45deg,#ff758c,#ff7eb3);
+  color: white; border: none; padding: 12px 25px;
+  border-radius: 50px; font-size: 16px; cursor: pointer;
+  margin: 10px; font-weight: bold; transition:0.3s;
+}
+.btn:hover { transform: scale(1.05); }
+.memory-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.memory-grid img { width:45%; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
+input[type="password"] { width:100%; padding:15px; border:none; border-radius:15px; font-size:16px; outline:none; margin-bottom:20px; background:rgba(255,255,255,0.95); color:#333; }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN START -->
+<div id="lockScreen">
+  <div class="hearts"></div>
+  <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(25px); border:1px solid rgba(255,255,255,0.3); padding:40px 30px; border-radius:30px; text-align:center; box-shadow:0 8px 40px rgba(0,0,0,0.2); width:90%; max-width:400px; position:relative; z-index:2;">
+    <h1 style="color:white; font-size:30px; margin-bottom:10px;">🔒 Secret For You</h1>
+    <p style="color:white; margin-bottom:25px;">Sirf Shazia ke liye bana hai 💌</p>
+    <input type="password" id="passwordInput" placeholder="Password dalo...">
+    <button class="btn" onclick="checkPassword()" style="width:100%;">Unlock ❤️</button>
+    <p id="errorMsg" style="color:#fff176; margin-top:15px; display:none; font-weight:bold;">Galat password! Dobara try karo 😢</p>
+  </div>
+</div>
+
+<script>
+function checkPassword(){
+  let pass = document.getElementById("passwordInput").value;
+  if(pass === "Shazia Amir"){
+    document.getElementById("lockScreen").style.display = "none";
+    confetti({particleCount: 150, spread: 90, origin: { y: 0.6 }});
+  } else {
+    document.getElementById("errorMsg").style.display = "block";
+  }
+}
+document.getElementById("passwordInput").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){ checkPassword(); }
+});
+</script>
+<!-- PASSWORD SCREEN END -->
+
+<!-- MAIN WEBSITE CONTENT -->
+<div class="glass">
+  <h1>🎉 Happy Birthday Shazia! 🎉</h1>
+  <p>Aaj ka din sirf tumhare naam ❤️</p>
+  <button class="btn" onclick="document.getElementById('memories').scrollIntoView()">Memories Dekho</button>
+  <button class="btn" onclick="document.getElementById('letter').scrollIntoView()">Letter Padho</button>
+  <button class="btn" onclick="document.getElementById('quiz').scrollIntoView()">Quiz Khelo</button>
+</div>
+
+<!-- PHOTOS SECTION -->
+<div id="memories" class="glass">
+  <h2>💖 Hamari Yaadein</h2>
+  <div class="memory-grid">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
+    <img src="photo4.jpg" alt="Memory 4">
+  </div>
+  <p><small>Note: photos ko GitHub me upload karna</small></p>
+</div>
+
+<!-- LETTER SECTION -->
+<div id="letter" class="glass">
+  <h2>Meri Jaan Shazia ❤️</h2>
+  <p>Aaj duniya ka sabse khaas din hai<br>
+  Kyunki aaj meri Shazia ka Birthday hai 🥳<br><br>
+  Tumhari har smile duniya ko roshan karti hai<br>
+  Tum meri dua ho, meri khushi ho<br><br>
+  Promise - Tumhara haath kabhi nahi chhodunga<br>
+  I love you more than yesterday, less than tomorrow<br>
+  Forever Yours ❤️ - Amir</p>
+  <button class="btn" onclick="playVoice()">🎤 Meri Voice Suno</button>
+  <audio id="voiceMsg" src="voice.mp3"></audio>
+</div>
+
+<script>
+function playVoice(){
+  document.getElementById('voiceMsg').play();
+}
+</script>
+
+<!-- QUIZ SECTION -->
+<div id="quiz" class="glass">
+  <h2>❤️ Kitna Jante Ho Mujhe?</h2>
+  <p>1. Mera favourite color kya hai?</p>
+  <button class="btn" onclick="alert('Sahi jawab! 💖')">Pink</button>
+  <button class="btn" onclick="alert('Galat! 😢')">Blue</button>
+  
+  <p>2. Hum pehli baar kahan mile the?</p>
+  <button class="btn" onclick="alert('Sahi jawab! 💖')">WhatsApp</button>
+  <button class="btn" onclick="alert('Galat! 😢')">School</button>
+</div>
+
+<!-- SONG SECTION -->
+<div class="glass">
+  <h2>🎵 Tumhare Liye Gaana</h2>
+  <audio controls src="song.mp3"></audio>
+  <p><small>Note: song.mp3 ko bhi upload karna</small></p>
+</div>
+
+<!-- GIFT BOX -->
+<div class="glass">
+  <h2>🎁 Tumhara Gift</h2>
+  <button class="btn" onclick="openGift()">Click Karke Kholo</button>
+  <p id="giftMsg" style="display:none; font-size:20px;">I Love You Shazia ❤️<br>Tum meri duniya ho</p>
+</div>
+
+<script>
+function openGift(){
+  document.getElementById('giftMsg').style.display = 'block';
+  confetti({particleCount: 200, spread: 100, origin: { y: 0.6 }});
+}
+</script>
+
+</body>
+</html>
